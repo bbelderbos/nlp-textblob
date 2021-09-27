@@ -25,6 +25,15 @@ def main(file, sort_key="polarity"):
     return scores
 
 
+def show_report(scores):
+    print("polarity | subjectivity | text")
+    print("-" * 50)
+    for row in scores:
+        polarity = round(row.polarity, 3)
+        subjectivity = round(row.subjectivity, 3)
+        print(f"{polarity:<8} | {subjectivity:<12} | {row.text}")
+
+
 if __name__ == "__main__":
     if len(sys.argv) != 2:
         print(f"Usage: {sys.argv[0]} reviews.txt")
@@ -32,10 +41,4 @@ if __name__ == "__main__":
 
     reviews = sys.argv[1]
     scores = main(reviews)
-
-    print("polarity | subjectivity | text")
-    print("-" * 50)
-    for row in scores:
-        polarity = round(row.polarity, 3)
-        subjectivity = round(row.subjectivity, 3)
-        print(f"{polarity:<8} | {subjectivity:<12} | {row.text}")
+    show_report(scores)
