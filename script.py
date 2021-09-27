@@ -34,7 +34,7 @@ def show_report(scores):
         print(f"{polarity:<8} | {subjectivity:<12} | {row.text}")
 
 
-if __name__ == "__main__":
+if __name__ == "__main__":  # pragma: no cover
     if len(sys.argv) != 2:
         print(f"Usage: {sys.argv[0]} reviews.txt")
         sys.exit(1)
